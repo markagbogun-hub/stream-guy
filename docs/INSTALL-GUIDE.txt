@@ -1,0 +1,37 @@
+How to install RadioCastOS
+
+Requirements: Windows 10 or 11, 64-bit. Download RadioCastOS-Setup.exe from the
+download page you were sent.
+
+1. Download the installer
+Your browser may say the file "isn't commonly downloaded" or "could be harmful".
+This appears for new software from a small publisher and does not mean the file is infected.
+
+- Edge: click the three dots next to the download, choose Keep, then Show more, then Keep anyway.
+- Chrome: click the arrow next to the download, choose Keep.
+
+2. Run the installer (Windows SmartScreen)
+Double-click RadioCastOS-Setup.exe. Windows may show a blue "Windows protected your PC"
+window. RadioCastOS is new, and Windows shows this for any program it has not seen many
+people install yet.
+
+1. Click More info (the small link in the message).
+2. Click Run anyway.
+
+Windows then asks "Do you want to allow this app to make changes?" and may list the
+publisher as Unknown. Click Yes.
+
+Only do this with an installer you downloaded from our own download page. If you got the file from
+anywhere else, do not run it.
+
+3. Follow the setup wizard
+Press Next through the wizard, choose the options you want (such as a desktop shortcut)
+and press Install, then Finish.
+
+4. Start RadioCastOS and enter your licence key
+RadioCastOS starts in the free Basic package. After you buy, open the licence screen,
+press Enter licence key, paste the key from your email and press Activate. The
+features in your package unlock straight away; no restart is needed.
+
+Need help?
+Email the address on your receipt and tell us the Windows version and what you saw on screen.

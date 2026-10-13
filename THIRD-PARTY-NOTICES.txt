@@ -1,0 +1,34 @@
+RadioCastOS - third-party notices
+
+RadioCastOS includes or runs the following third-party software. Each is licensed
+under its own terms, which apply to that component only.
+
+FFmpeg (ffmpeg.exe, ffplay.exe) - bundled as separate programs that RadioCastOS runs
+  to capture and encode audio. The Windows build used is the "essentials" build from
+  gyan.dev, which is licensed under the GNU General Public License v3 (GPLv3).
+  Licence text and source code: https://ffmpeg.org/ and https://www.gyan.dev/ffmpeg/builds/
+  You may replace the bundled ffmpeg.exe with your own copy.
+
+Piper (text-to-speech) - NOT bundled. The optional Piper presenter voice runs a separate
+  Piper install that you provide and point RadioCastOS to (AI Presenter Studio > PIPER SETUP).
+  Piper's current engine is licensed under the GNU General Public License v3 (GPLv3); it is
+  never included in or linked into RadioCastOS. If you choose DOWNLOAD in PIPER SETUP, the
+  official release from https://github.com/rhasspy/piper and a voice from
+  https://huggingface.co/rhasspy/piper-voices are fetched to your own user folder on your PC. Voice models have their own licences; check
+  the one for each model you use.
+
+Kokoro (text-to-speech) and sherpa-onnx - NOT bundled. The optional Kokoro presenter voice runs a
+  separate sherpa-onnx program (sherpa-onnx-offline-tts.exe) with a Kokoro model that you provide
+  and point RadioCastOS to (AI Presenter Studio > KOKORO SETUP). sherpa-onnx is by the k2-fsa
+  project (Apache-2.0, https://github.com/k2-fsa/sherpa-onnx); the Kokoro model is from
+  https://huggingface.co/hexgrad/Kokoro-82M (Apache-2.0). The sherpa-onnx speech data folder
+  includes espeak-ng (GPLv3), which stays a separate program on your PC and is never linked into
+  RadioCastOS. If you choose DOWNLOAD in KOKORO SETUP, the official sherpa-onnx release and the
+  Kokoro model from https://github.com/k2-fsa/sherpa-onnx/releases are fetched to your own user
+  folder. Check the licence files that come with each download.
+
+Python and Tkinter - Python Software Foundation License. https://www.python.org/
+PyInstaller - used to build the application (GPL with a bootloader exception that
+  allows distributing the built program under any licence). https://pyinstaller.org/
+tkinterdnd2 - drag and drop from Windows Explorer (MIT). Includes tkdnd (BSD-style).
+pycaw - optional microphone ducking on Windows (MIT).
