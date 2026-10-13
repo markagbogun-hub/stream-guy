@@ -1,0 +1,78 @@
+name: CI
+
+# Source-level checks on every push and pull request.
+# These mirror scripts/production_readiness.py. They do not replace testing the
+# installer, real audio hardware, or a supervised soak test on a station PC.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Source checks (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # The app itself is stdlib + Tkinter, and Linux CI has no Tk, so GUI modules
+      # are import-checked with scripts/_tkstub.py. No pip install is needed.
+      - name: Compile
+        run: python -m compileall -q src scripts
+
+      - name: Version consistency
+        run: python scripts/check_version.py
+
+      - name: Import validation
+        run: python scripts/validate_imports.py
+
+      - name: Undefined names
+        run: python scripts/check_names.py
+
+      - name: Self-test
+        run: python scripts/selftest.py
+
+      - name: Production readiness suite
+        run: python scripts/production_readiness.py
+
+  windows-gui:
+    name: Real-Tk GUI smoke test (Windows)
+    runs-on: windows-latest
+    needs: checks
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install optional runtime packages
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          # Build-only pinned PyInstaller is not needed to run the GUI test.
+          pip install "mutagen>=1.47.0" "tkinterdnd2>=0.4.2"
+
+      - name: GUI smoke test
+        env:
+          PYTHONPATH: src
+        run: python scripts/gui_smoke.py
